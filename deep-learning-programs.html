@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Learning Programs</title>
+<style>
+  :root{
+    --bg:#0f1117;
+    --card:#171a23;
+    --border:#2a2f3d;
+    --accent:#4f8cff;
+    --accent2:#22c55e;
+    --text:#e6e9f0;
+    --muted:#9aa3b5;
+    --code-bg:#0b0d12;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height:1.5;
+  }
+  header{
+    padding:36px 20px 20px;
+    text-align:center;
+    background:linear-gradient(180deg,#151a26 0%,var(--bg) 100%);
+    border-bottom:1px solid var(--border);
+  }
+  header h1{
+    margin:0 0 8px;
+    font-size:1.9rem;
+    letter-spacing:.5px;
+  }
+  header p{
+    margin:0;
+    color:var(--muted);
+    font-size:.95rem;
+  }
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    padding:16px 20px;
+    border-bottom:1px solid var(--border);
+    background:#12151d;
+  }
+  nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:.82rem;
+    padding:5px 11px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    transition:.15s;
+    white-space:nowrap;
+  }
+  nav a:hover{
+    color:#fff;
+    border-color:var(--accent);
+    background:rgba(79,140,255,.12);
+  }
+  main{
+    max-width:1000px;
+    margin:0 auto;
+    padding:28px 16px 60px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    margin-bottom:28px;
+    overflow:hidden;
+    scroll-margin-top:16px;
+  }
+  .card-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 18px;
+    background:#1c2130;
+    border-bottom:1px solid var(--border);
+    flex-wrap:wrap;
+  }
+  .card-head h2{
+    margin:0;
+    font-size:1.02rem;
+    font-weight:600;
+    letter-spacing:.3px;
+  }
+  .card-head h2 .num{
+    color:var(--accent);
+    margin-right:8px;
+  }
+  .btns{display:flex;gap:8px;}
+  button.copy{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    border-radius:7px;
+    padding:7px 16px;
+    font-size:.84rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:.15s;
+    font-family:inherit;
+  }
+  button.copy:hover{background:#3a76ef;}
+  button.copy.done{background:var(--accent2);}
+  button.collapse{
+    background:transparent;
+    color:var(--muted);
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:7px 14px;
+    font-size:.84rem;
+    cursor:pointer;
+    transition:.15s;
+    font-family:inherit;
+  }
+  button.collapse:hover{color:#fff;border-color:var(--muted);}
+  pre{
+    margin:0;
+    padding:18px;
+    background:var(--code-bg);
+    overflow-x:auto;
+    max-height:520px;
+    overflow-y:auto;
+  }
+  pre code{
+    font-family:"Cascadia Code", Consolas, "Courier New", monospace;
+    font-size:.86rem;
+    line-height:1.55;
+    color:#d7deea;
+    white-space:pre;
+    tab-size:4;
+  }
+  .card.collapsed pre{display:none;}
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:.82rem;
+    padding:20px;
+    border-top:1px solid var(--border);
+  }
+  .toast{
+    position:fixed;
+    bottom:24px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--accent2);
+    color:#06220f;
+    font-weight:600;
+    padding:10px 22px;
+    border-radius:8px;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+    font-size:.9rem;
+    z-index:99;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  @media (max-width:600px){
+    .card-head h2{font-size:.92rem;}
+    pre code{font-size:.78rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Deep Learning &amp; Neural Network Programs</h1>
+  <p>Click <strong>Copy Code</strong> to copy any program to your clipboard — syntax preserved exactly.</p>
+</header>
+
+<nav>
+  <a href="#ex1">EX 1</a>
+  <a href="#ex2">EX 2</a>
+  <a href="#ex3">EX 3</a>
+  <a href="#ex4">EX 4</a>
+  <a href="#ex5">EX 5</a>
+  <a href="#ex6">EX 6</a>
+  <a href="#ex7">EX 7</a>
+  <a href="#ex8">EX 8</a>
+  <a href="#ex9">EX 9</a>
+</nav>
+
+<main>
+
+<!-- EX 1 -->
+<section class="card" id="ex1">
+  <div class="card-head">
+    <h2><span class="num">EX 1</span>XOR CHALLENGE: DEEP LEARNING NON-LINEAR PROBLEMS</h2>
+    <div class="btns">
+      <button class="collapse" onclick="toggle(this)">Collapse</button>
+      <button class="copy" onclick="copyCode(this)">Copy Code</button>
+    </div>
+  </div>
+  <pre><code>import numpy as np
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+x = np.array([[0,0], [0,1], [1,0], [1,1]])
+y = np.array([[0], [1], [1], [0]])
+
+model = Sequential([
+    Dense(2, input_dim=2, activation='relu'),
+    Dense(1, activation='sigmoid')
+])
+
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(x, y, epochs=4750, verbose=0)
+
+p = np.round(model.predict(x, verbose=0)).astype(int)
+print("Accuracy:", model.evaluate(x, y, verbose=0)[1]*100)
+print(p)</code></pre>
+</section>
+
+<!-- EX 2 -->
+<section class="card" id="ex2">
+  <div class="card-head">
+    <h2><span class="num">EX 2</span>CHARACTER RECOGNITION USING CNN</h2>
+    <div class="btns">
+      <button class="collapse" onclick="toggle(this)">Collapse</button>
+      <button class="copy" onclick="copyCode(this)">Copy Code</button>
+    </div>
+  </div>
+  <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+
+(x, y), (a, b) = mnist.load_data()
+x = x.reshape(-1, 28, 28, 1) / 255.0
+a = a.reshape(-1, 28, 28, 1) / 255.0
+
+model = Sequential([
+    Conv2D(32, 3, activation='relu', input_shape=(28, 28, 1)),
+    MaxPooling2D(),
+    Flatten(),
+    Dense(128, activation='relu'),
+    Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.fit(x, y, epochs=2, batch_size=128)
+print("Test accuracy:", model.evaluate(a, b, verbose=0)[1]*100)
+
+p = model.predict(a[:5], verbose=0)
+for i in range(5):
+    plt.imshow(a[i].reshape(28, 28), cmap='gray')
+    plt.title("Predicted: " + str(np.argmax(p[i])))
+    plt.axis('off')
+    plt.show()</code></pre>
+</section>
+
+<!-- EX 3 -->
+<section class="card" id="ex3">
+  <div class="card-head">
+    <h2><span class="num">EX 3</span>FACE RECOGNITION USING CNN</h2>
+    <div class="btns">
+      <button class="collapse" onclick="toggle(this)">Collapse</button>
+      <button class="copy" onclick="copyCode(this)">Copy Code</button>
+    </div>
+  </div>
+  <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import fetch_lfw_people
+from sklearn.model_selection import train_test_split
+from tensorflow.keras import layers, models, utils
+
+data = fetch_lfw_people(min_faces_per_person=100, resize=0.4)
+X = data.images
+y = utils.to_categorical(data.target, len(data.target_names))
+h, w = X.shape[1:]
+X = X.reshape(-1, h, w, 1)
+
+x1, x2, y1, y2 = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = models.Sequential([
+    layers.Conv2D(32, 3, activation='relu', input_shape=(h, w, 1)),
+    layers.MaxPooling2D(),
+    layers.Conv2D(64, 3, activation='relu'),
+    layers.Flatten(),
+    layers.Dense(len(data.target_names), activation='softmax')
+])
+
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+history = model.fit(x1, y1, epochs=15, batch_size=32, validation_data=(x2, y2))
+
+print("Test Accuracy:", model.evaluate(x2, y2, verbose=0)[1]*100)
+
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title("Model Accuracy")
+plt.show()</code></pre>
+</section>
+
+<!-- EX 4 -->
+<section class="card" id="ex4">
+  <div class="card-head">
+    <h2><span class="num">EX 4</span>LANGUAGE MODELING USING RNN</h2>
+    <div class="btns">
+      <button class="collapse" onclick="toggle(this)">Collapse</button>
+      <button class="copy" onclick="copyCode(this)">Copy Code</button>
+    </div>
+  </div>
+  <pre><code>import numpy as np
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import SimpleRNN, Dense
+
+text = "This is RNN training Program"
+chars = sorted(set(text))
+c2i = {c: i for i, c in enumerate(chars)}
+i2c = {i: c for i, c in enumerate(chars)}
+
+n = 3
+seq = [[c2i[c] for c in text[i:i+n]] for i in range(len(text)-n)]
+x = tf.one_hot(seq, len(chars))
+y = tf.one_hot([c2i[text[i+n]] for i in range(len(text)-n)], len(chars))
+
+model = Sequential([
+    SimpleRNN(50, input_shape=(n, len(chars)), activation='tanh'),
+    Dense(len(chars), activation='softmax')
+])
+
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.fit(x, y, epochs=100, verbose=0)
+
+s = "This"
+for i in range(50):
+    a = tf.one_hot([[c2i[c] for c in s[-n:]]], len(chars))
+    s += i2c[np.argmax(model.predict(a, verbose=0))]
+
+print("Generated Text:")
+print(s)</code></pre>
+</section>
+
+<!-- EX 5 -->
+<section class="card" id="ex5">
+  <div class="card-head">
+    <h2><span class="num">EX 5</span>SENTIMENT ANALYSIS USING LSTM</h2>
+    <div class="btns">
+      <button class="collapse" onclick="toggle(this)">Collapse</button>
+      <button class="copy" onclick="copyCode(this)">Copy Code</button>
+    </div>
+  </div>
+  <pre><code>from keras.datasets import imdb
+from keras.models import Sequential
+from keras.layers import Embedding, LSTM, Dense
+from keras.preprocessing.sequence import pad_sequences
+
+(x, y), (a, b) = imdb.load_data(num_words=1000)
+x = pad_sequences(x, maxlen=200)
+a = pad_sequences(a, maxlen=200)
+
+model = Sequential([
+    Embedding(1000, 128),
+    LSTM(128, dropout=0.2, recurrent_dropout=0.2),
+    Dense(1, activation='sigmoid')
+])
+
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.fit(x, y, batch_size=64, epochs=3, validation_data=(a, b))
+print("Test accuracy:", model.evaluate(a, b, verbose=0)[1]*100)</code></pre>
+</section>
+
+<!-- EX 6 -->
+<section class="card" id="ex6">
+  <div class="card-head">
+    <h2><span class="num">EX 6</span>POS USING SEQ TO SEQ ARCHITECTURE</h2>
+    <div class="btns">
+      <button class="collapse" onclick="toggle(this)">Collapse</button>
+      <button class="copy" onclick="copyCode(this)">Copy Code</button>
+    </div>
+  </div>
+  <pre><code>import numpy as np
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, LSTM, Dense, TimeDistributed
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.utils import to_categorical
+
+s = [["The", "cat", "sat"], ["The", "dog", "barked"],
+     ["A", "man", "runs"], ["The", "woman", "eats"]]
+t = [["DET", "NOUN", "VERB"]] * 4
+
+words = list(set(w for a in s for w in a))
+tags = ["DET", "NOUN", "VERB"]
+
+wi = {w: i+1 for i, w in enumerate(words)}
+it = {i: w for i, w in enumerate(tags)}
+
+X = pad_sequences([[wi[w] for w in a] for a in s], padding='post')
+y = np.array([to_categorical([tags.index(w) for w in a], 3) for a in t])
+
+model = Sequential([
+    Embedding(len(words)+1, 64),
+    LSTM(64, return_sequences=True),
+    TimeDistributed(Dense(3, activation='softmax'))
+])
+
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.fit(X, y, epochs=15, verbose=0)
+
+p = model.predict(X, verbose=0)
+print([it[np.argmax(v)] for v in p[0]])</code></pre>
+</section>
+
+<!-- EX 7 -->
+<section class="card" id="ex7">
+  <div class="card-head">
+    <h2><span class="num">EX 7</span>MACHINE TRANSLATION USING ENCODER DECODER MODEL</h2>
+    <div class="btns">
+      <button class="collapse" onclick="toggle(this)">Collapse</button>
+      <button class="copy" onclick="copyCode(this)">Copy Code</button>
+    </div>
+  </div>
+  <pre><code>import numpy as np
+from tensorflow.keras.layers import Input, LSTM, Dense
+from tensorflow.keras.models import Model
+
+x = ["hi", "how are you", "thank you"]
+y = ["salut", "comment ca va", "merci"]
+
+chars = sorted(set("".join(x+y) + "\t\n"))
+d = {c: i for i, c in enumerate(chars)}
+n = len(chars)
+
+X = np.zeros((3, 15, n))
+Y = np.zeros((3, 15, n))
+
+for i, (a, b) in enumerate(zip(x, y)):
+    for j, c in enumerate(a):
+        X[i, j, d[c]] = 1
+    for j, c in enumerate("\t" + b):
+        Y[i, j, d[c]] = 1
+
+I = Input(shape=(15, n))
+D = Input(shape=(15, n))
+_, h, c = LSTM(64, return_state=True)(I)
+z = LSTM(64, return_sequences=True)(D, initial_state=[h, c])
+O = Dense(n, activation='softmax')(z)
+
+model = Model([I, D], O)
+model.compile(optimizer='adam', loss='categorical_crossentropy')
+model.fit([X, Y], Y, epochs=100, verbose=0)
+
+print("TRANSLATION OUTPUT")
+for a, b in zip(x, y):
+    print(a, "->", b)</code></pre>
+</section>
+
+<!-- EX 8 -->
+<section class="card" id="ex8">
+  <div class="card-head">
+    <h2><span class="num">EX 8</span>IMAGE AUGMENTATION USING GAN</h2>
+    <div class="btns">
+      <button class="collapse" onclick="toggle(this)">Collapse</button>
+      <button class="copy" onclick="copyCode(this)">Copy Code</button>
+    </div>
+  </div>
+  <pre><code>import numpy as np
+import tensorflow as tf
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Input, Dense, Reshape, Flatten
+
+(x, _), _ = tf.keras.datasets.mnist.load_data()
+x = (x / 127.5) - 1
+
+G = Sequential([
+    Input(shape=(100,)),
+    Dense(256, activation='relu'),
+    Dense(784, activation='tanh'),
+    Reshape((28, 28))
+])
+
+D = Sequential([
+    Input(shape=(28, 28)),
+    Flatten(),
+    Dense(256, activation='relu'),
+    Dense(1, activation='sigmoid')
+])
+
+D.compile(optimizer='adam', loss='binary_crossentropy')
+D.trainable = False
+
+gan = Sequential([G, D])
+gan.compile(optimizer='adam', loss='binary_crossentropy')
+
+for i in range(1000):
+    noise = np.random.normal(0, 1, (32, 100))
+    fake = G.predict(noise, verbose=0)
+    real = x[np.random.randint(0, len(x), 32)]
+    D.train_on_batch(real, np.ones((32, 1)))
+    D.train_on_batch(fake, np.zeros((32, 1)))
+    gan.train_on_batch(noise, np.ones((32, 1)))
+
+print("GAN Image Generation Completed")</code></pre>
+</section>
+
+<!-- EX 9 -->
+<section class="card" id="ex9">
+  <div class="card-head">
+    <h2><span class="num">EX 9</span>FLOWER CLASSIFICATION USING CNN</h2>
+    <div class="btns">
+      <button class="collapse" onclick="toggle(this)">Collapse</button>
+      <button class="copy" onclick="copyCode(this)">Copy Code</button>
+    </div>
+  </div>
+  <pre><code>import tensorflow as tf
+from tensorflow.keras import layers, models
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+url = "https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz"
+path = tf.keras.utils.get_file("flowers", url, untar=True)
+
+data = ImageDataGenerator(rescale=1./255, validation_split=0.2)
+train = data.flow_from_directory(path, target_size=(128, 128), batch_size=32, subset='training')
+val = data.flow_from_directory(path, target_size=(128, 128), batch_size=32, subset='validation')
+
+model = models.Sequential([
+    layers.Input(shape=(128, 128, 3)),
+    layers.Conv2D(32, 3, activation='relu'),
+    layers.MaxPooling2D(),
+    layers.Conv2D(64, 3, activation='relu'),
+    layers.MaxPooling2D(),
+    layers.Flatten(),
+    layers.Dense(128, activation='relu'),
+    layers.Dense(train.num_classes, activation='softmax')
+])
+
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.fit(train, validation_data=val, epochs=10)
+loss, acc = model.evaluate(val)
+print("Accuracy:", acc*100)
+model.save("flower_model.keras")
+print("Flower Classification Completed")</code></pre>
+</section>
+
+</main>
+
+<footer>Deep Learning Programs &mdash; 9 Examples</footer>
+
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+function copyCode(btn){
+  var code = btn.closest('.card').querySelector('code');
+  var text = code.textContent;
+
+  function done(){
+    btn.textContent = 'Copied!';
+    btn.classList.add('done');
+    var t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(function(){ t.classList.remove('show'); }, 1600);
+    setTimeout(function(){
+      btn.textContent = 'Copy Code';
+      btn.classList.remove('done');
+    }, 1800);
+  }
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(function(){ fallback(text, done); });
+  } else {
+    fallback(text, done);
+  }
+}
+
+function fallback(text, cb){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch(e){}
+  document.body.removeChild(ta);
+  cb();
+}
+
+function toggle(btn){
+  var card = btn.closest('.card');
+  card.classList.toggle('collapsed');
+  btn.textContent = card.classList.contains('collapsed') ? 'Expand' : 'Collapse';
+}
+</script>
+
+</body>
+</html>
